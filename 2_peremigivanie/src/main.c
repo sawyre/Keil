@@ -2,13 +2,13 @@
 
 int main(void)
 {
-	RCC->APB2ENR|=1<<4;
-	GPIOC->CRH=0x22;
+	RCC->APB2ENR|=1<<4;			//Подать питание на порт C
+	GPIOC->CRH=0x22;				//Настроить режим контактов 8 и 9 в порту C на режим General purpose output push pull
 	while(1){
-		GPIOC->ODR|=1<<8;
-		GPIOC->ODR&=~(1<<8); 
-		GPIOC->ODR|=1<<9;
-		GPIOC->ODR&=~(1<<9); 
+		GPIOC->ODR|=1<<8;			//Вывести на контакт 8 высокий уровень
+		GPIOC->ODR&=~(1<<8); 	//Вывести на контакт 8 низкий уровень
+		GPIOC->ODR|=1<<9;			//Вывести на контакт 9 высокий уровень
+		GPIOC->ODR&=~(1<<9); 	//Вывести на контакт 9 низкий уровень
 	}
 	return 0;
 }
